@@ -1,0 +1,29 @@
+@model WebApplication1.Models.Product
+
+@{
+    ViewData["Title"] = "Удалить товар";
+}
+
+<h1>Удалить товар</h1>
+
+<p>Вы уверены, что хотите удалить этот товар?</p>
+
+<dl>
+    <dt>Название</dt>
+    <dd>@Model.Name</dd>
+
+    <dt>Категория</dt>
+    <dd>@Model.Category?.Name</dd>
+
+    <dt>Цена</dt>
+    <dd>@Model.Price</dd>
+
+    <dt>Артикул</dt>
+    <dd>@Model.Sku</dd>
+</dl>
+
+<form asp-action="Delete" method="post">
+    <input type="hidden" asp-for="Id" />
+    <button type="submit">Удалить</button>
+    <a asp-action="Index">Отмена</a>
+</form>
