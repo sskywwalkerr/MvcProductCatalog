@@ -1,0 +1,51 @@
+@using Microsoft.AspNetCore.Mvc.Rendering
+@model WebApplication1.Models.Product
+
+@{
+    ViewData["Title"] = "Редактировать товар";
+}
+
+<h1>Редактировать товар</h1>
+
+<form asp-action="Edit" method="post">
+    <input type="hidden" asp-for="Id" />
+
+    <div asp-validation-summary="ModelOnly" style="color:red;"></div>
+
+    <p>
+        <label asp-for="Name"></label>
+        <input asp-for="Name" />
+        <span asp-validation-for="Name" style="color:red;"></span>
+    </p>
+
+    <p>
+        <label asp-for="Description"></label>
+        <textarea asp-for="Description"></textarea>
+    </p>
+
+    <p>
+        <label asp-for="Price"></label>
+        <input asp-for="Price" />
+        <span asp-validation-for="Price" style="color:red;"></span>
+    </p>
+
+    <p>
+        <label asp-for="Sku"></label>
+        <input asp-for="Sku" />
+        <span asp-validation-for="Sku" style="color:red;"></span>
+    </p>
+
+    <p>
+        <label asp-for="CategoryId"></label>
+        @Html.DropDownList("CategoryId", (SelectList)ViewBag.Categories)
+        <span asp-validation-for="CategoryId" style="color:red;"></span>
+    </p>
+
+    <p>
+        <label asp-for="InStock"></label>
+        <input asp-for="InStock" type="checkbox" />
+    </p>
+
+    <button type="submit">Сохранить изменения</button>
+    <a asp-action="Index">Отмена</a>
+</form>
